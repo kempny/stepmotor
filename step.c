@@ -23,10 +23,10 @@ int main (void)
 	printf("wiringPi-Error\n");
     exit(1);
   }
-       pinMode(28, OUTPUT);
-       pinMode(29, OUTPUT);
-       digitalWrite(29, 1);
-       for(i=0;i<100;i++)
+       pinMode(29, OUTPUT); // step motor direction
+       pinMode(28, OUTPUT); // step moror pulse
+       digitalWrite(29, 1); // clockwise
+       for(i=0;i<100;i++)   // counterclockwise
          {  
           digitalWrite(28,1);
           Delay(10);;
