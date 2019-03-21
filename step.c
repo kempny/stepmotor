@@ -26,14 +26,14 @@ int main (void)
        pinMode(29, OUTPUT); // step motor direction
        pinMode(28, OUTPUT); // step moror pulse
        digitalWrite(29, 1); // clockwise
-       for(i=0;i<100;i++)   // counterclockwise
+       for(i=0;i<100;i++)   
          {  
           digitalWrite(28,1);
           Delay(10);;
           digitalWrite(28, 0);
           Delay(100000);;
          }
-       digitalWrite(29, 0);
+       digitalWrite(29, 0); // counterclockwise
        for(i=0;i<100;i++)
          {  
           digitalWrite(28,1);
