@@ -1,1 +1,1 @@
-An exemplary program in C controlling a stepper motor using a A988 controller
+An exemplary program in C controlling a stepper motor using a A4988 controller
