@@ -1,3 +1,10 @@
+/***************************************************************************
+**   demo program                                                         **
+**   compile with:                                                        **
+**     cc step.c delay.c steplib.c -o step -lwiringPi -lpthread           **
+**   run:                                                                 **
+**     ./step                                                             **      
+***************************************************************************/
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
