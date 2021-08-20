@@ -1,5 +1,5 @@
 /********************************************************************************
-delay:
+*   delay:
 *       This file is part of stepmotor - RaspberryPi stepper motor 
 *       control library using A4988 controller
 *       Copyright (C) 2021  Boguslaw Kempny kempny@stanpol.com.pl
