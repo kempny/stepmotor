@@ -55,6 +55,8 @@ int main (void)
        smprec(smhandle,0);
        smspeed(smhandle,60);
 
+       smprec(smhandle,0);
+       smspeed(smhandle,60);
    printf("Move until stop\n");
    printf("Start engine\n");
        smrun(smhandle);
@@ -70,14 +72,14 @@ int main (void)
        smrun(smhandle);
        sleep(3);
        smstop(smhandle);
-       sleep(1);
+       sleep(2);
 
    printf ("3 seconds with quarter step\n");
        smprec(smhandle,2);
        smrun(smhandle);
        sleep(3);
        smstop(smhandle);
-       sleep(1);
+       sleep(2);
 
    printf("Move counterclockwise\n");
 
@@ -85,7 +87,7 @@ int main (void)
        smrun(smhandle);
        sleep(2);
        smstop(smhandle);
-       sleep(1);
+       sleep(2);
 
    printf("Move clockwise\n");
 
@@ -93,54 +95,55 @@ int main (void)
        smrun(smhandle);
        sleep(2);
        smstop(smhandle);
-       sleep(1);
+       sleep(2);
 
    printf("20 steps at full step\n");
        smprec(smhandle,0);
        smstep(smhandle, 20);
-       sleep(1);
+       sleep(2);
 
    printf("20 steps at half step\n");
        smprec(smhandle, 1);
        smstep(smhandle, 20);
+       sleep(2);
 
    printf("20 steps at quarter step\n");
        smprec(smhandle, 2);
        smstep(smhandle, 20);
-       sleep(1);
+       sleep(2);
 
    printf("20 steps at eighth step\n");
        smprec(smhandle, 3);
        smstep(smhandle, 20);
-       sleep(1);
+       sleep(2);
 
    printf("20 steps at sixteenth step\n");
        smprec(smhandle, 4);
        smstep(smhandle, 20);
-       sleep(1);
+       sleep(2);
 
    printf("45 degree angle\n");
        smangle(smhandle, 0, 45);
-       sleep(1);
+       sleep(2);
 
    printf("180 degree angle\n");
        smangle(smhandle, 0, 180);
-       sleep(1);
+       sleep(2);
 
    printf("2 full evolutions and 90 degree\n");
        smangle(smhandle, 2, 90);
-       sleep(1);
+       sleep(2);
 
    printf("1 step\n");
        smstep(smhandle, 1);
-       sleep(1);
+       sleep(2);
 
    printf("10 steps\n");
        smstep(smhandle, 10);
-       sleep(1);
+       sleep(2);
    printf("100 steps\n");
        smstep(smhandle, 100);
-       sleep(1);
+       sleep(2);
 
    printf("move with speed varying\n");
    printf("Start engine\n");
@@ -148,7 +151,7 @@ int main (void)
        smspeed(smhandle,60);
        smprec(smhandle, 0);
        smrun(smhandle);
-       sleep(2);
+       sleep(3);
 
    printf("Accelerate\n");
        j = smgetspeed(smhandle);
@@ -159,7 +162,7 @@ int main (void)
           Delay_mls(20);
         }
    printf("Constant speed\n");
-       sleep(2);
+       sleep(3);
    printf("Decelerate\n");
        for(i=1000;i>0; i--)
         {
@@ -168,8 +171,9 @@ int main (void)
           Delay_mls(20);
         }
    printf("Constant speed\n");
-       sleep(2);
+       sleep(3);
 
    printf("Stop engine\n");
        smstop(smhandle);
 }
+
