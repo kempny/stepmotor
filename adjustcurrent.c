@@ -1,3 +1,31 @@
+/********************************************************************************
+*  adjustcurrent:
+*       This file is part of stepmotor - RaspberryPi stepper motor 
+*       control library using A4988 controller
+*       Copyright (C) 2021  Boguslaw Kempny kempny@stanpol.com.pl
+*
+*********************************************************************************
+*    stepmotor is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    stepmotor is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
+*
+*********************************************************************************
+**   auxiliary program to adjust stepper motor max current                                                        ** 
+**   compile with:                                                             **
+**     cc adjustcurrent.c -o adjustcurrent -lwiringPi                          **
+**   run:                                                                      **
+**     ./step                                                                  ** 
+********************************************************************************/
+
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,15 +41,6 @@
 
 
 int i,j;
-struct timespec tim;
-void Delay(int microsec)
-{
-
- tim.tv_sec = 0;
- tim.tv_nsec = microsec * 1000;
-     while(nanosleep(&tim,&tim)==-1)
-          continue;
-}
 
 void prec(int div) //precision, 0 (full step) - 4 (1/16 of step)
 {
