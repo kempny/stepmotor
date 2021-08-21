@@ -4,3 +4,5 @@ step.c	demo program to learn library
 steplib.c stepper motor library routines
 steplib.h library header file
 API - library functions description
+FILES - this file
+INSTALL - installation instruction
