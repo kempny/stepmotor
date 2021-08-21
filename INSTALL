@@ -9,12 +9,12 @@ The library will be installed in:
 
 /usr/local/lib
 
-the headre file in
+The header file in:
 
 /usr/local/include
 
-To remove 
-To uninstall
+
+To uninstall library
 =======================
 
 make uninstall
