@@ -1,0 +1,100 @@
+int sminit (int ms1, int ms2, int ms3, int stepdir, int step, int reset, int sleep, int enable, int stepprev)
+
+Initialize stepper motor.
+
+First 8 parameters - pin numbers to which wy connected A4988 controller signal (numbered according wiringPi scheme), 
+the last - steps per evolution of stepper motor.
+
+Returns handler to stepper motor structure, you can use it referring to particular motor
+
+You can connect up to 10 motors (witch controllers) to single Raspberry, signals from controllers can be connected 
+in parallel to single GPIO pins.
+
+if you don't use some signal for example MS1, MS2, MS3set it as connected to pin number 99. 
+
+
+
+void smprec(int moth, int div);
+
+Set controller Microstepping Resolution.
+
+moth - stepper motor handle
+
+res - resolution:
+
+0 - full step
+1- half step
+2 - quarter step
+3 - eighth step
+4 - sixteenth step
+
+
+
+void smspeed(int moth, int rpm);
+
+Set motor speed.
+
+You can change speed when moror is working.
+
+moth - stepper motor handle
+rmp - rotations per minute
+
+
+
+
+int smgetspeed(int moth);
+
+Get motor current motor speed, rotations per minute.
+
+moth - stepper motor handle
+
+
+
+void smrun(int moth);
+
+Start rotating the motor.
+
+moth - stepper motor handle
+
+This function is non-blocking, starts the motor and returns. 
+You are able to change rotation speed, resolution, perform other tasks etc.
+
+To stop the motor, use smstop function.
+
+
+void smstop(int moth);
+
+Stop rotating of the motor.
+
+moth - stepper motor handle
+
+
+
+void smdir(int moth, int dir);
+Set rotating direction
+
+moth - stepper motor handle
+
+dir - direction
+
+0 - clockwise
+1 - counterclockwise
+
+
+void smstep(int moth, int count);
+
+Perform count steps
+
+moth - stepper motor handle
+count - number of steps 
+
+
+void smangle(int moth, int full, int fract);
+
+Rotate by angle 
+
+moth - stepper motor handle
+full - the number of complete 360 degrees turns
+frac - the remaining angle
+For example, full = 1, frac = 45 is the angle of 405 degrees
+
