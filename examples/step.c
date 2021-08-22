@@ -138,7 +138,7 @@ int main (void)
 
    printf("Clock\n");
    smprec(smhandle, 0);
-   for(i=1;i<20;i++)
+   for(i=0;i<20;i++)
    {
        smstep(smhandle, 1);
        sleep(1);
