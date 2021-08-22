@@ -108,7 +108,7 @@ void smstep(int moth, int count)
 /**********************************************************/
 void smangle(int moth, int full, int fract)
 {
-   smstep(moth, full * parm[moth].stepprev + parm[moth].stepprev * fract / 360);
+       smstep(moth, full * parm[moth].stepprev * parm[moth].prec + parm[moth].stepprev * parm[moth].prec * fract / 360);
 }
 /**********************************************************/
 void *run(void *ptr)
