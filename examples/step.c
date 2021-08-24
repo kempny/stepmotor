@@ -54,7 +54,8 @@ int main (void)
 
        smprec(smhandle,0);
        smspeed(smhandle,60);
-      smdir(smhandle, 1);
+       smdir(smhandle, 1);
+//goto aaa;
 
    printf("Move until stop\n");
    printf("Start engine\n");
@@ -136,24 +137,16 @@ int main (void)
        sleep(2);
 
 
-   printf("Clock\n");
-   smprec(smhandle, 0);
-   for(i=0;i<20;i++)
-   {
-       smstep(smhandle, 1);
-       sleep(1);
-   }
-
-   printf("1 step\n");
-       smstep(smhandle, 1);
+   printf("100 steps\n");
+       smstep(smhandle, 100);
        sleep(2);
 
    printf("10 steps\n");
        smstep(smhandle, 10);
        sleep(2);
 
-   printf("100 steps\n");
-       smstep(smhandle, 100);
+   printf("1 step\n");
+       smstep(smhandle, 1);
        sleep(2);
 
    printf("move with speed varying\n");
@@ -186,4 +179,12 @@ int main (void)
 
    printf("Stop engine\n");
        smstop(smhandle);
+
+   printf("Clock\n");
+   smprec(smhandle, 0);
+   for(i=0;i<20;i++)
+   {
+       smstep(smhandle, 1);
+       sleep(1);
+   }
 }
