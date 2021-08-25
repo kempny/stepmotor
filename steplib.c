@@ -140,6 +140,7 @@ void smrun(int moth)
 void smstop(int moth)
 {
   parm[moth].move = 0;
+    Delay_mcs(parm[moth].speed * 3);
 }
 
 /**********************************************************/
