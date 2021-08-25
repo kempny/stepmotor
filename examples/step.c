@@ -81,7 +81,7 @@ int main (void)
        smstop(smhandle);
        sleep(2);
 
-   printf("Move counterclockwise\n");
+   printf("Move clockwise\n");
 
        smdir(smhandle, 1);
        smrun(smhandle);
@@ -89,7 +89,7 @@ int main (void)
        smstop(smhandle);
        sleep(2);
 
-   printf("Move clockwise\n");
+   printf("Move counterclockwise\n");
 
        smdir(smhandle, 0);
        smrun(smhandle);
@@ -165,8 +165,11 @@ int main (void)
           smspeed (smhandle, newspeed);
           Delay_mls(20);
         }
-   printf("Constant speed\n");
-       sleep(3);
+
+  printf("Stop engine\n");
+       smstop(smhandle);
+       sleep(2);
+
    printf("Decelerate\n");
        for(i=1000;i>0; i--)
         {
