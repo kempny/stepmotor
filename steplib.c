@@ -33,9 +33,21 @@ int sminit (int ms1, int ms2, int ms3, int stepdir, int step, int reset, int sle
   if (ms3 != 99) pinMode (ms3, OUTPUT);
   if (stepdir != 99) pinMode (stepdir, OUTPUT);
   if (step != 99) pinMode (step, OUTPUT);
-  if (reset != 99) pinMode (reset, OUTPUT);
-  if (sleep != 99) pinMode (sleep, OUTPUT);
-  if (enable != 99) pinMode (enable, OUTPUT);
+  if (reset != 99)  
+    {
+      pinMode (reset, OUTPUT);
+      digitalWrite(reset, 1);
+    }
+  if (sleep != 99) 
+    {
+      pinMode (sleep, OUTPUT);
+      digitalWrite(sleep, 1);
+    }
+  if (enable != 99) 
+    {
+      pinMode (enable, OUTPUT);
+      digitalWrite(enable, 1);
+    }
 
   return(motcount); 
   motcount++;
@@ -55,9 +67,12 @@ int trms[5][3] = {
        if (div > 4) 
           {printf("Unknown precision\n"); exit(1);}
 
-       digitalWrite (parm[moth].ms1pin, trms[div][0]);
-       digitalWrite (parm[moth].ms2pin, trms[div][1]);
-       digitalWrite (parm[moth].ms3pin, trms[div][2]);
+       if (parm[moth].ms1pin != 99)
+         digitalWrite (parm[moth].ms1pin, trms[div][0]);
+       if (parm[moth].ms2pin != 99)
+         digitalWrite (parm[moth].ms2pin, trms[div][1]);
+       if (parm[moth].ms3pin != 99)
+         digitalWrite (parm[moth].ms3pin, trms[div][2]);
 
        olddiv = parm[moth].prec;
        newdiv = 1;
@@ -70,7 +85,6 @@ int trms[5][3] = {
        parm[moth].prec = newdiv;
 // correct the speed of motor
        parm[moth].speed = parm[moth].speed * olddiv / newdiv;
-//printf (" div speed  %d %d \n", div, parm[moth].speed);
 }  
 
 /***********************************************************************/
@@ -83,7 +97,6 @@ void smspeed(int moth, int rpm) // motor handle, rotations per minute
       speedf=1000000/((float)rpm/60*parm[moth].stepprev*2*div);
       parm[moth].speed = speedf;
       parm[moth].speedrpm = rpm;
-//printf (" div speed  %d %d \n", div, parm[moth].speed);
 }  
 
 /***********************************************************************/
@@ -93,8 +106,11 @@ int smgetspeed(int moth) // motor handle
 }  
 
 /**********************************************************/
+
 void smstep(int moth, int count)
 {
+   if (parm[moth].steppin == 99) return;
+
    int i;
    for(i=0;i<count;i++)
      { 
@@ -108,13 +124,17 @@ void smstep(int moth, int count)
 /**********************************************************/
 void smangle(int moth, int full, int fract)
 {
-       smstep(moth, full * parm[moth].stepprev * parm[moth].prec + parm[moth].stepprev * parm[moth].prec * fract / 360);
+   smstep(moth, full * parm[moth].stepprev * parm[moth].prec + parm[moth].stepprev * parm[moth].prec * fract / 360);
 }
+
 /**********************************************************/
 void *run(void *ptr)
 {
+
 int moth;
 moth =  (int)ptr;
+
+  if (parm[moth].steppin == 99) return(0);
 
   parm[moth].move = 1;
   while(parm[moth].move)
@@ -124,11 +144,10 @@ moth =  (int)ptr;
        digitalWrite (parm[moth].steppin, 0);
        Delay_mcs(parm[moth].speed);
      }
+  return(0);
 }
 
-
-
-
+/**********************************************************/
 void smrun(int moth)
 {
     pthread_t thread_id;
@@ -140,11 +159,37 @@ void smrun(int moth)
 void smstop(int moth)
 {
   parm[moth].move = 0;
-    Delay_mcs(parm[moth].speed * 3);
+  Delay_mcs(parm[moth].speed * 3); // to be sure that the step cycle will be finished
+
+
 }
 
 /**********************************************************/
 void smdir(int moth, int dir) 
-{
+{ 
+    if (parm[moth].dirpin == 99) return;
+
     digitalWrite (parm[moth].dirpin, dir);
+}
+ 
+/**********************************************************/
+void smreset(int moth)
+{
+    digitalWrite (parm[moth].resetpin, 1);
+    Delay_mls(1);
+    digitalWrite (parm[moth].resetpin, 1);
+}
+
+/**********************************************************/
+void smssleep(int moth, int state) // state: 0- sleep, 1 - no sleep
+{
+
+    digitalWrite (parm[moth].sleeppin, state); 
+    Delay_mls(1);
+}
+
+/**********************************************************/
+void smsenable(int moth, int state) // state: 0- enable, 1 - disable
+{
+    digitalWrite (parm[moth].enablepin, state); 
 }

@@ -4,9 +4,13 @@ void smspeed(int moth, int rpm);
 int smgetspeed(int moth);
 void smrun(int moth);
 void smstop(int moth);
+void smreset(int moth);
+void smssleep(int moth, int state);
+void smsenable(int moth, int state);
 void smdir(int moth, int dir);
 void smstep(int moth, int count);
 void smangle(int moth, int full, int fract);
+void *run(void *ptr);
 void Delay_mcs(int microsec);
 void Delay_mls(int milisec);
 
