@@ -73,8 +73,6 @@ moth - stepper motor handle
 void smdir(int moth, int dir);
 Set rotating direction
 
-moth - stepper motor handle
-
 dir - direction
 
 0 - clockwise
@@ -98,3 +96,22 @@ full - the number of complete 360 degrees turns
 frac - the remaining angle
 For example, full = 1, frac = 45 is the angle of 405 degrees
 
+void smreset(int moth);
+
+Reset the controller
+
+moth - stepper motor handle
+
+
+void smsleep(int moth, int state);
+
+Put controller in sleep state.
+
+moth - stepper motor handle
+state: 0- sleep, 1 - no sleep
+
+void smenable(int moth, int state);
+Enable/disable controller outputs
+
+moth - stepper motor handle
+state: 0- enable (normal operation), 1 - disable outputs
