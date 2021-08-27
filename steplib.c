@@ -181,7 +181,7 @@ void smreset(int moth)
 }
 
 /**********************************************************/
-void smssleep(int moth, int state) // state: 0- sleep, 1 - no sleep
+void smsleep(int moth, int state) // state: 0- sleep, 1 - no sleep
 {
 
     digitalWrite (parm[moth].sleeppin, state); 
@@ -189,7 +189,7 @@ void smssleep(int moth, int state) // state: 0- sleep, 1 - no sleep
 }
 
 /**********************************************************/
-void smsenable(int moth, int state) // state: 0- enable, 1 - disable
+void smenable(int moth, int state) // state: 0- enable, 1 - disable
 {
     digitalWrite (parm[moth].enablepin, state); 
 }
