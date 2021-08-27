@@ -50,19 +50,20 @@ int main (void)
          exit(1);
         }
   
-       smhandle = sminit( 27, 24, 25, 29, 28, 99, 99, 99, 20);
+       smhandle = sminit( 27, 24, 25, 29, 28, 99, 99, 99, 48);
 
        smprec(smhandle,0);
        smspeed(smhandle,60);
        smdir(smhandle, 1);
-//goto aaa;
 
    printf("Move until stop\n");
    printf("Start engine\n");
        smrun(smhandle);
        sleep(2);
+
    printf("The engine turns\n");
        sleep(3);
+
    printf("Stop engine\n");
        smstop(smhandle);
        sleep(2);
@@ -81,14 +82,6 @@ int main (void)
        smstop(smhandle);
        sleep(2);
 
-   printf("Move clockwise\n");
-
-       smdir(smhandle, 1);
-       smrun(smhandle);
-       sleep(2);
-       smstop(smhandle);
-       sleep(2);
-
    printf("Move counterclockwise\n");
 
        smdir(smhandle, 0);
@@ -97,7 +90,14 @@ int main (void)
        smstop(smhandle);
        sleep(2);
 
+   printf("Move clockwise\n");
+
        smdir(smhandle, 1);
+       smrun(smhandle);
+       sleep(2);
+       smstop(smhandle);
+       sleep(2);
+
    printf("20 steps at full step\n");
        smprec(smhandle,0);
        smstep(smhandle, 20);
@@ -124,7 +124,7 @@ int main (void)
        sleep(2);
 
    printf("45 degree angle\n");
-       smprec(smhandle, 2);
+       smprec(smhandle, 3);
        smangle(smhandle, 0, 45);
        sleep(2);
 
@@ -149,45 +149,50 @@ int main (void)
        smstep(smhandle, 1);
        sleep(2);
 
-   printf("move with speed varying\n");
+   printf("Move with speed varying\n");
    printf("Start engine\n");
        int newspeed;
-       smspeed(smhandle,60);
+       smspeed(smhandle,50);
        smprec(smhandle, 0);
        smrun(smhandle);
-       sleep(3);
+       sleep(2);
 
    printf("Accelerate\n");
        j = smgetspeed(smhandle);
-       for(i=0;i<1000; i++)
+       for(i=0;i<500; i++)
         {
           newspeed = i + j; 
           smspeed (smhandle, newspeed);
           Delay_mls(20);
         }
-
-  printf("Stop engine\n");
-       smstop(smhandle);
-       sleep(2);
-
-   printf("Decelerate\n");
-       for(i=1000;i>0; i--)
-        {
-          newspeed = i + j; 
-          smspeed (smhandle, newspeed);
-          Delay_mls(20);
-        }
-   printf("Constant speed\n");
-       sleep(3);
 
    printf("Stop engine\n");
        smstop(smhandle);
+       sleep(2);
+
+   printf("Start engine\n");
+       smrun(smhandle);
+
+   printf("Decelerate\n");
+       for(i=500;i>0; i--)
+        {
+          newspeed = i + j; 
+          smspeed (smhandle, newspeed);
+          Delay_mls(20);
+        }
+
+   printf("Constant speed\n");
+       sleep(2);
+
+   printf("Stop engine\n");
+       smstop(smhandle);
+       sleep(2);
 
    printf("Clock\n");
-   smprec(smhandle, 0);
-   for(i=0;i<20;i++)
-   {
-       smstep(smhandle, 1);
-       sleep(1);
-   }
+       smprec(smhandle, 0);
+   for(i=0;i<12;i++)
+       {
+         smstep(smhandle, 1);
+         sleep(1);
+       }
 }
