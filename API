@@ -2,7 +2,7 @@ int sminit (int ms1, int ms2, int ms3, int stepdir, int step, int reset, int sle
 
 Initialize stepper motor.
 
-First 8 parameters - pin numbers to which wy connected A4988 controller signal (numbered according wiringPi scheme), 
+First 8 parameters - pin numbers to which we connected A4988 controller signal (numbered according wiringPi scheme), 
 the last - steps per evolution of stepper motor.
 
 Returns handler to stepper motor structure, you can use it referring to particular motor
