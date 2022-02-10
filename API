@@ -10,7 +10,7 @@ Returns handler to stepper motor structure, you can use it referring to particul
 You can connect up to 10 motors (witch controllers) to single Raspberry, signals from controllers can be connected 
 in parallel to single GPIO pins.
 
-if you don't use some signal for example MS1, MS2, MS3set it as connected to pin number 99. 
+if you don't use some signal for example MS1, MS2, MS3 set it as connected to pin number 99. 
 
 
 
