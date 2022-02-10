@@ -6,3 +6,4 @@ steplib.h library header file
 API - library functions description
 FILES - this file
 INSTALL - installation instruction
+stepmotor_example.pdf - connection diagram, step.c test program 
