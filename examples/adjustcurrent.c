@@ -23,7 +23,7 @@
 **   compile with:                                                             **
 **     cc adjustcurrent.c -o adjustcurrent -lwiringPi                          **
 **   run:                                                                      **
-**     ./step                                                                  ** 
+**     ./adjustcurrent                                                                ** 
 ********************************************************************************/
 
 #include <wiringPi.h>
