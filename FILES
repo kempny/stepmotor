@@ -1,6 +1,7 @@
 adjustcurrent.c  auxiliary program to adjust stepper motor current limit 
 delay.c	interrupt-safe delay routines
 step.c	demo program to learn library 
+test.c demo program, control of two step motors
 steplib.c stepper motor library routines
 steplib.h library header file
 API - library functions description
