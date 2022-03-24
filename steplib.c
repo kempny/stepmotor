@@ -9,12 +9,13 @@
 
 
 struct conndef parm[MAXENG]; 
-int motcount = 0;
+static int motcount = 0;
 
 /**********************************************************************/
 int sminit (int ms1, int ms2, int ms3, int stepdir, int step, int reset, int sleep, int enable, int stepprev)
 {
-  if (motcount == MAXENG)
+int handle;
+  if (motcount == (MAXENG -1))
       {printf("To many engines, only %d are supported\n", MAXENG); exit(1);}
 
   parm[motcount].ms1pin =  ms1;
@@ -48,9 +49,9 @@ int sminit (int ms1, int ms2, int ms3, int stepdir, int step, int reset, int sle
       pinMode (enable, OUTPUT);
       digitalWrite(enable, 1);
     }
-
-  return(motcount); 
+  handle=motcount;
   motcount++;
+  return(handle); 
 }
 
 /***********************************************************************/
