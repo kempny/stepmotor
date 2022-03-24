@@ -1,7 +1,7 @@
 /********************************************************************************
 **   demo program, two engines                                                 ** 
 **   compile with:                                                             **
-**     cc test.c steplib.c -o test -lwiringPi                                  **
+**     cc test.c -o test -lwiringPi   -lsteplib                                **
 **   run:                                                                      **
 **     ./test                                                                  ** 
 ********************************************************************************/
